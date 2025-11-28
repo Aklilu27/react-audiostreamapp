@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "file": "stream-client.js",
+    "sourceRoot": "",
+    "sources": [
+        "../src/stream-client.ts"
+    ],
+    "names": [],
+    "mappings": ";;;AAAA,kDAAmD;AAEnD,8EAA8E;AAC9E,8DAA8D;AAC9D,MAAM,MAAM,GAAG,cAAc,CAAC;AAC9B,MAAM,SAAS,GAAG,kEAAkE,CAAC;AAGxE,QAAA,MAAM,GAAG,IAAI,uBAAY,CAAC,MAAM,EAAE,SAAS,CAAC,CAAC"
+}
