@@ -1,0 +1,124 @@
+/* ChatPage styles */
+
+.chat-page {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 20px;
+  min-height: calc(100vh - 60px);
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.chat-page__sidebar {
+  background-color: #f1f5f9;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+}
+
+.chat-page__content {
+  background-color: #fff;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.chat-page__status {
+  margin-top: 8px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.chat-page__card {
+  margin-top: 24px;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: #f8fafc;
+}
+
+.chat-page__form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.chat-page__form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.chat-page__form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.chat-page__form-group input,
+.chat-page__form-group textarea {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #cbd5f5;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.chat-page__form-row {
+  display: flex;
+  align-items: center;
+}
+
+.chat-page__checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #334155;
+}
+
+.chat-page__checkbox input {
+  width: 16px;
+  height: 16px;
+}
+
+.chat-page__form-group input:focus,
+.chat-page__form-group textarea:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.chat-page__button {
+  align-self: flex-start;
+  background: #4f46e5;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.chat-page__button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.chat-page__error {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #fee2e2;
+  color: #b91c1c;
+  font-size: 14px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .chat-page {
+    grid-template-columns: 1fr;
+  }
+}

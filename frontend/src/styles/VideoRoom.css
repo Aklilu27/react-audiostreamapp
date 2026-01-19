@@ -1,0 +1,126 @@
+.video-room {
+  min-height: calc(100vh - 60px);
+  padding: 20px;
+  background: #0f1115;
+  color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.video-room__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #1f2330;
+  padding-bottom: 16px;
+}
+
+.video-room__header h2 {
+  margin: 0 0 4px;
+}
+
+.video-room__leave {
+  background: #f44336;
+  border: none;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.video-room__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.video-tile {
+  position: relative;
+  background: #1a1f2b;
+  border-radius: 12px;
+  overflow: hidden;
+  min-height: 180px;
+  aspect-ratio: 16 / 9;
+}
+
+.video-tile video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-tile__label {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.video-tile__placeholder {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #cbd5f5;
+  background: radial-gradient(circle at top, #22283a, #121621);
+}
+
+.video-tile__avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #334155;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.video-tile__status {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.video-room__controls {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.video-room__controls button {
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: #2a3142;
+  color: #fff;
+}
+
+.video-room__controls button.primary {
+  background: #667eea;
+}
+
+.video-room__controls button.secondary {
+  background: #445071;
+}
+
+.video-room__controls button.danger {
+  background: #f44336;
+}
+
+.video-room__error {
+  text-align: center;
+  color: #ffb4b4;
+  background: rgba(244, 67, 54, 0.15);
+  padding: 10px 16px;
+  border-radius: 8px;
+}

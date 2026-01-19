@@ -1,0 +1,197 @@
+/* Container for all pages */
+.page {
+  min-height: calc(100vh - 60px); /* minus header height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  background-color: #f9f9f9;
+  color: #333;
+  font-family: "Inter", sans-serif;
+}
+
+/* Section inside the page (like hero, chat, rooms) */
+.page-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px 0;
+  padding: 20px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* Headings */
+.page-section h1,
+.page-section h2,
+.page-section h3 {
+  margin-bottom: 16px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* Paragraphs */
+.page-section p {
+  margin-bottom: 12px;
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Buttons (reusable) */
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.button-primary {
+  background-color: #667eea;
+  color: white;
+}
+
+.button-primary:hover {
+  background-color: #5a67d8;
+}
+
+.button-secondary {
+  background-color: #e2e8f0;
+  color: #333;
+}
+
+.button-secondary:hover {
+  background-color: #cbd5e1;
+}
+
+/* Cards or small boxes inside pages */
+.card {
+  padding: 16px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+  margin-bottom: 16px;
+}
+
+/* Centered content for empty states or hero sections */
+.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .page {
+    padding: 12px;
+  }
+
+  .page-section {
+    padding: 16px;
+  }
+}
+
+.room-page {
+  min-height: calc(100vh - 60px);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: #f9fafb;
+}
+
+.room-page__header {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.room-page__header h2 {
+  margin-bottom: 6px;
+  color: #111827;
+}
+
+.room-page__meta {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.room-page__badge {
+  background: #fef3c7;
+  color: #92400e;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.room-page__delete {
+  margin-top: 16px;
+  background: #ef4444;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.room-page__delete:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.room-page__form {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 420px;
+}
+
+.room-page__form input {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+}
+
+.room-page__button {
+  align-self: flex-start;
+  background: #4f46e5;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.room-page__status {
+  padding: 20px;
+  text-align: center;
+  color: #64748b;
+}
+
+.room-page__error {
+  background: #fee2e2;
+  color: #b91c1c;
+  padding: 10px 12px;
+  border-radius: 8px;
+}
