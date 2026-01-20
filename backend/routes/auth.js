@@ -96,7 +96,8 @@ router.post('/register', registerValidation, async (req, res) => {
     console.error('Register error:', error);
     res.status(500).json({
       success: false,
-      message: 'Server error during registration'
+      message: 'Server error during registration',
+      error: error?.message || 'Unknown error'
     });
   }
 });
@@ -170,7 +171,8 @@ router.post('/login', loginValidation, async (req, res) => {
     console.error('Login error:', error);
     res.status(500).json({
       success: false,
-      message: 'Server error during login'
+      message: 'Server error during login',
+      error: error?.message || 'Unknown error'
     });
   }
 });
