@@ -67,6 +67,30 @@ const VideoRoom = () => {
       .map((part) => part[0]?.toUpperCase())
       .join('') || 'U';
 
+  const MicOnIcon = () => (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V22h2v-3.08A7 7 0 0 0 19 12h-2Z" />
+    </svg>
+  );
+
+  const MicOffIcon = () => (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M19 11a7 7 0 0 1-1.23 3.98l-1.52-1.52A5 5 0 0 0 17 11h2ZM5 11h2a5 5 0 0 0 7.68 4.17l1.47 1.47A7 7 0 0 1 5 11Zm7 4a3 3 0 0 1-3-3V8.21l6 6A2.99 2.99 0 0 1 12 15Zm0-12a3 3 0 0 1 3 3v5.17l-6-6V6a3 3 0 0 1 3-3Zm8.19 18.19L3.81 4.81 5.22 3.4l16.38 16.38-1.41 1.41Z" />
+    </svg>
+  );
+
+  const CamOffIcon = () => (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M21 6.5 16 10V7a2 2 0 0 0-2-2H9.41l8.29 8.29L21 11.5v-5ZM3.27 2 2 3.27 4.73 6H4a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 1.41-.59l3.32 3.32L20 19.73 3.27 2ZM14 16H4V8h2.73l7.27 7.27V16Z" />
+    </svg>
+  );
+
+  const CamOnIcon = () => (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M14 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-1.5l5 3v-9l-5 3V9a2 2 0 0 0-2-2Z" />
+    </svg>
+  );
+
   useEffect(() => {
     return () => {
       if (localStreamRef.current) {
@@ -315,7 +339,7 @@ const VideoRoom = () => {
   return (
     <div className="video-room">
       <header className="video-room__header">
-        <div>
+        <div className="video-room__title">
           <h2>Video Room</h2>
           <p>{participants.length} participants</p>
         </div>
@@ -330,12 +354,19 @@ const VideoRoom = () => {
           const stream = isLocal ? localStreamRef.current : streamByUserId[participant.userId];
           const showVideo = Boolean(stream) && (!isLocal || !isVideoOff);
           return (
-            <div key={participant.userId} className="video-tile">
+            <div
+              key={participant.userId}
+              className={`video-tile${isLocal ? ' video-tile--local' : ''}`}
+            >
               {showVideo ? (
                 isLocal ? (
-                  <video ref={localVideoRef} autoPlay muted playsInline />
+                  <div className="video-tile__media">
+                    <video ref={localVideoRef} autoPlay muted playsInline />
+                  </div>
                 ) : (
-                  <VideoPlayer stream={stream} />
+                  <div className="video-tile__media">
+                    <VideoPlayer stream={stream} />
+                  </div>
                 )
               ) : (
                 <div className="video-tile__placeholder">
@@ -348,6 +379,22 @@ const VideoRoom = () => {
               <span className="video-tile__label">
                 {isLocal ? 'You' : participant.username}
               </span>
+              {isLocal && (
+                <div className="video-tile__status-icons">
+                  <span
+                    className={`status-icon ${isAudioMuted ? 'status-icon--off' : ''}`}
+                    title={isAudioMuted ? 'Muted' : 'Mic on'}
+                  >
+                    {isAudioMuted ? <MicOffIcon /> : <MicOnIcon />}
+                  </span>
+                  <span
+                    className={`status-icon ${isVideoOff ? 'status-icon--off' : ''}`}
+                    title={isVideoOff ? 'Camera off' : 'Camera on'}
+                  >
+                    {isVideoOff ? <CamOffIcon /> : <CamOnIcon />}
+                  </span>
+                </div>
+              )}
             </div>
           );
         })}
