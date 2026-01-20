@@ -71,8 +71,15 @@ router.post('/register', registerValidation, async (req, res) => {
       { expiresIn: process.env.JWT_EXPIRE }
     );
 
-    // Generate Stream.io token
-    const streamToken = streamService.createToken(user._id);
+    // Generate Stream.io token (optional if Stream is unavailable)
+    let streamToken = null;
+    try {
+      if (streamService.isInitialized()) {
+        streamToken = streamService.createToken(user._id);
+      }
+    } catch (streamError) {
+      console.error('Stream.io token creation failed:', streamError);
+    }
 
     // Update user status
     user.isOnline = true;
@@ -131,7 +138,14 @@ router.post('/login', loginValidation, async (req, res) => {
       { expiresIn: process.env.JWT_EXPIRE }
     );
 
-    const streamToken = streamService.createToken(user._id);
+    let streamToken = null;
+    try {
+      if (streamService.isInitialized()) {
+        streamToken = streamService.createToken(user._id);
+      }
+    } catch (streamError) {
+      console.error('Stream.io token creation failed:', streamError);
+    }
 
     // Update user status
     user.isOnline = true;
@@ -181,6 +195,13 @@ router.get('/me', async (req, res) => {
 // Get Stream.io token
 router.get('/stream-token', async (req, res) => {
   try {
+    if (!streamService.isInitialized()) {
+      return res.status(503).json({
+        success: false,
+        message: 'Stream service is unavailable'
+      });
+    }
+
     const streamToken = streamService.createToken(req.user._id);
     
     res.json({
