@@ -65,10 +65,15 @@ router.post('/register', registerValidation, async (req, res) => {
     }
 
     // Generate JWT token
+    const tokenOptions = {};
+    if (process.env.JWT_EXPIRE) {
+      tokenOptions.expiresIn = process.env.JWT_EXPIRE;
+    }
+
     const token = jwt.sign(
       { userId: user._id },
       process.env.JWT_SECRET,
-      { expiresIn: process.env.JWT_EXPIRE }
+      tokenOptions
     );
 
     // Generate Stream.io token (optional if Stream is unavailable)
@@ -133,10 +138,15 @@ router.post('/login', loginValidation, async (req, res) => {
     }
 
     // Generate tokens
+    const tokenOptions = {};
+    if (process.env.JWT_EXPIRE) {
+      tokenOptions.expiresIn = process.env.JWT_EXPIRE;
+    }
+
     const token = jwt.sign(
       { userId: user._id },
       process.env.JWT_SECRET,
-      { expiresIn: process.env.JWT_EXPIRE }
+      tokenOptions
     );
 
     let streamToken = null;
